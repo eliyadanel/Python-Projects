@@ -1,0 +1,41 @@
+###########################################################################
+##                          Treasure Map                                 ##
+###########################################################################
+
+from time import sleep
+
+row1 = ["😍", "😍", "😘"]
+row2 = ["😋", "😝", "🤪"]
+row3 = ["🤣", "😅", "😓"]
+
+map = [row1, row2, row3]
+
+print(f"    1     2     3\n1{row1}\n2{row2}\n3{row3}")
+
+position = input("Where do you want to put the treasure? Please type the row and then the column in this fromat: row+column (23)\n")
+
+row_num = (int(position[0]))
+column_num = (int(position[1]))
+
+print(map[row_num - 1])
+confirm = input(f"You selected this spot for your treasure {map[row_num - 1][column_num - 1]}, are you sure you want to continue? y/n\n")
+
+if confirm == 'y' or confirm == 'yes':
+    print("Burying your treasure... please hold.")
+    sleep(5.0)
+    map[row_num - 1][column_num - 1] = "❌"
+    print(f"    1     2     3\n1{row1}\n2{row2}\n3{row3}")
+    see = input("shh.. your treasure is under the ❌\nWould you like to see it? y/n\n")
+
+    if see == 'y' or see == 'yes':
+        print("Digging... please hold.")
+        map[row_num - 1][column_num - 1] = "💲"
+        print(f"    1     2     3\n1{row1}\n2{row2}\n3{row3}")
+    
+    else:
+        print("Looks like you want to keep it a secret. Goodbye")
+        exit
+
+else:
+    print("Looks like you're not so sure.. try again from the begining.")
+    exit

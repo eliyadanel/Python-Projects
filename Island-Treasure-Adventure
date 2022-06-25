@@ -1,0 +1,83 @@
+###########################################################################
+##                     Tresure Island Adventure                          ##
+###########################################################################
+
+from tracemalloc import start
+
+game_title = (r'''
+ ______  ____     ___   ____  _____ __ __  ____     ___      __ __  __ __  ____   ______ 
+|      ||    \   /  _] /    |/ ___/|  |  ||    \   /  _]    |  |  ||  |  ||    \ |      |
+|      ||  D  ) /  [_ |  o  (   \_ |  |  ||  D  ) /  [_     |  |  ||  |  ||  _  ||      |
+|_|  |_||    / |    _]|     |\__  ||  |  ||    / |    _]    |  _  ||  |  ||  |  ||_|  |_|
+  |  |  |    \ |   [_ |  _  |/  \ ||  :  ||    \ |   [_     |  |  ||  :  ||  |  |  |  |  
+  |  |  |  .  \|     ||  |  |\    ||     ||  .  \|     |    |  |  ||     ||  |  |  |  |  
+  |__|  |__|\_||_____||__|__| \___| \__,_||__|\_||_____|    |__|__| \__,_||__|__|  |__|  
+                                                                                         
+''')
+
+treasure = (r'''
+ *******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\` . "-._ /_______________|_______
+|                   | |o;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/[TomekK]
+*******************************************************************************
+''')
+
+print(game_title)
+print("Welcome to your Treasure Island adventure!\nYour mission is to find the treasure chest.\nYou're at a cross road. Would you like to turn left or right?")
+
+cross_road = input()
+
+#door color choice function. 
+def door_color():
+    door = input("Which door would you like to go through?\n")
+    if door == 'red':
+       print("When you 1st open the red door and peer into the room behind it you see nothing there but dust. You walk into the room carefully and immediatly hear the door shut behind you.\nYou turn around and try to open it but it won't budge.\nYou look around again to try and find something to help you escape and suddenly relize you are not alone after all.\nstaring at you were 3 other gohsts of treasure hunters- just like you who wanted to find the lost treasure and chose the wrong door.\nWith no escape from the room, they must have starved to death.\nOh well, you gave it a good go.\nGame over!")
+       exit
+    elif door == 'blue':
+        print("Behind the blue door is a terrible monster with 3 heads and an axe. He immediatly atttacks, and the last thing you see are his glowing, red eyes. Game over!")
+        exit
+    elif door == 'yellow':
+        print("You have found the treasure behind the yellow door, you win!!")
+        print(treasure)
+        exit
+    else:
+        print("Your choise could not be comprehended. Please type 'red', 'yellow' or 'blue'")
+        door_color()
+
+#cross road choice
+if cross_road == "left" or cross_road == "Left":
+    print("You've arrived at a lake with a small island in the middle.")
+    lake = input("Type 'wait' to wait for a boat, or 'swim' to swim to the island yourself.\n")
+    #lake choice
+    if lake == 'wait':
+        print("You arrive at the island unharmed. There is a house with 3 doors up ahead. One red, one yellow, and one blue")
+        door_color()     
+    elif lake == 'swim':
+        print("You are not one for waiting, so you jump right in the lake and begin swimming towards the island. \nAbout half way through you feel something slimy tickeling you leg, you assume it's some seaweed and keep on swimming. \nBut as you try and swim forward you relize you are not getting anu closer. Suddenly you feel the slimy ticklig turn into a tug and you're dragged deep under water\n The last thing you see are the tentacles of a huge sea monster wrapped around your leg and it's many eyes staring at you.\nGame over!")
+    else:
+        print("Your choise could not be comprehended. Please type 'wait' or 'swim'")
+        start
+
+elif cross_road == "right" or cross_road == "Right":
+    print("You go over to the right path and walk until you reach a huge enchanted forest. You head into the forest and quickly relize you are lost beyond hope.\ndoomed to wonder the big scary forest forever, you think to yourself 'Well, at least the trees are kind of nice'.\nGame over!")
+    exit
+
+else:
+    print("Your choise could not be comprehended. Please type 'left' or 'right'")
+    start 

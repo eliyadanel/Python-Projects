@@ -1,0 +1,14 @@
+###########################################################################
+##                          Rest of Life Calculator                      ##
+###########################################################################
+
+print("Welcome to the rest of your life calcualtor :)\nHow many weeks do you have left if you live up to 90?")
+
+age_y = int(input("How old are you?"))
+
+years_remaining = 90 - age_y
+months_left =  years_remaining * 12 
+weeks_left = years_remaining * 52
+days_left = years_remaining * 365
+
+print(f"You currently have {months_left} months left, {weeks_left} weeks left, and {days_left} days left")

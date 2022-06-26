@@ -8,7 +8,24 @@ height = float(input("What is your height in meters? \n"))
 
 weight = float(input("What is your weight in KG? \n"))
 
-BMI = round((weight) / (height ** 2))
+BMI = float((weight) / (height ** 2))
 
-print("Your BMi is " + str(BMI))
+print("Your BMi is " + str(round(BMI,1)))
 
+if BMI <= 18.5:
+    print("Your BMI is " + str(round(BMI)) + ". You are underweihgt.") 
+
+elif BMI >= 18.5 and BMI <= 25:
+    print("Your BMI is " + str(round(BMI)) + ". Your weight is normal.") 
+
+elif BMI >= 25 and BMI <= 30:
+    print("Your BMI is " + str(round(BMI,1)) + ". You are overweight.") 
+
+elif BMI >= 30 and BMI <= 35:
+    print("Your BMI is " + str(round(BMI)) + ". You are obease.")
+
+elif BMI > 35:
+    print("Your BMI is " + str(round(BMI)) + ". You are clinically obease.")
+
+else:
+    print("Couldn't calculate your BMI please try again.")

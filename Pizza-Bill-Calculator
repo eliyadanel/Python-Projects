@@ -1,0 +1,107 @@
+###########################################################################
+##                     Pizza Bill Calculator                             ##
+###########################################################################
+
+#small_p = 15
+#medium_p = 20
+#large_p = 25
+
+#pep_s = 2
+#pep_m_l = 3
+#cheese = 1
+
+size = input("What size pizza do you want? please answer 's', 'm' or 'l' only.\n")
+toppings = input("Would you like peperoni on your pizza? 'y' or 'n' \n")
+extra_c = input("Would you like extra cheese on your pizza? 'y' or 'n'\n")
+bill = 0
+
+if size == 's':
+    print("1 small pizza added to your cart.")
+    bill += 15
+    
+    if toppings == 'y':
+        print("Adding peperoni to your pizza.")
+        bill += 2
+        
+        if extra_c == 'y':
+            print("Extra cheese added to your pizza.")
+            bill += 1
+            print(f"Your final bill is {bill}")
+        
+        else:
+            print("No cheese, no future.")
+            print(f"Your final bill is {bill}")
+
+    else:
+        print("No toppings for you, sir.")
+        
+        if extra_c == 'y':
+            print("Extra cheese added to your pizza.")
+            bill += 1
+            print(f"Your final bill is {bill}")
+        
+        else:
+            print("No cheese, no future.")
+            print(f"Your final bill is {bill}")
+
+elif size == 'm':
+    print("1 medium pizza added to your cart.")
+    bill += 20
+    
+    if toppings == 'y':
+        print("Adding peperoni to your pizza.")
+        bill += 3
+        
+        if extra_c == 'y':
+            print("Extra cheese added to your pizza.")
+            bill += 1
+            print(f"Your final bill is {bill}")
+        
+        else:
+            print("No cheese, no future.")
+            print(f"Your final bill is {bill}")
+
+    else:
+        print("No toppings for you, sir.")
+        
+        if extra_c == 'y':
+            print("Extra cheese added to your pizza.")
+            bill += 1
+            print(f"Your final bill is {bill}")
+        
+        else:
+            print("No cheese, no future.")
+            print(f"Your final bill is {bill}")
+
+elif size == 'l':
+    print("1 large pizza added to your cart.")
+    bill += 20
+    
+    if toppings == 'y':
+        print("Adding peperoni to your pizza.")
+        bill += 3
+        
+        if extra_c == 'y':
+            print("Extra cheese added to your pizza.")
+            bill += 1
+            print(f"Your final bill is {bill}")
+        
+        else:
+            print("No cheese, no future.")
+            print(f"Your final bill is {bill}")
+
+    else:
+        print("No toppings for you, sir.")
+        
+        if extra_c == 'y':
+            print("Extra cheese added to your pizza.")
+            bill += 1
+            print(f"Your final bill is {bill}")
+        
+        else:
+            print("No cheese, no future.")
+            print(f"Your final bill is {bill}")
+
+else:
+    print("Could not define the size of your pizza. Please try again.")
+    exit()

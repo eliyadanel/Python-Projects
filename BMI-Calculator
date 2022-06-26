@@ -3,14 +3,32 @@
 ###########################################################################
 
 print("Welcome to the BMI calculater")
+print('''\r
+    _
+               (  )         ,,,,,
+                 \\         . .  ,
+                  \\       | -   D
+                  (._)     \__-  |
+                             |   |
+                 \\|_  , ,---- _ |----.
+                  \__ ( (           /  )       _
+                     | \/ \.   '  _.|  \     (  )
+                     |  \ /(   /    /\_ \    //
+                      \ /  (       / /  )   //
+                           (  ,   / / ,   (_.)
+                           |......\ |  \,
+                          /  /     ) \---
+                   b'ger /___/___^//
 
+''')
 height = float(input("What is your height in meters? \n"))
 
 weight = float(input("What is your weight in KG? \n"))
 
 BMI = float((weight) / (height ** 2))
 
-print("Your BMi is " + str(round(BMI,1)))
+#print("Your BMi is " + str(round(BMI,1)))
+#Just a check for early stages.
 
 if BMI <= 18.5:
     print("Your BMI is " + str(round(BMI)) + ". You are underweihgt.") 

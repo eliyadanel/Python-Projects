@@ -1,0 +1,14 @@
+###########################################################################
+##                          BMI Calculator                               ##
+###########################################################################
+
+print("Welcome to the BMI calculater")
+
+height = float(input("What is your height in meters? \n"))
+
+weight = float(input("What is your weight in KG? \n"))
+
+BMI = round((weight) / (height ** 2))
+
+print("Your BMi is " + str(BMI))
+

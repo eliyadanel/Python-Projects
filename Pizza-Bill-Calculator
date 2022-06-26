@@ -9,7 +9,29 @@
 #pep_s = 2
 #pep_m_l = 3
 #cheese = 1
-
+print("welcome to the pizza ordering whatever")
+print('''\r
+  ._
+                                   ,(  `-.
+                                 ,': `.   `.
+                               ,` *   `-.   \
+                             ,'  ` :+  = `.  `.
+                           ,~  (o):  .,   `.  `.
+                         ,'  ; :   ,(__) x;`.  ;
+                       ,'  :'  itz  ;  ; ; _,-'
+                     .'O ; = _' C ; ;'_,_ ;
+                   ,;  _;   ` : ;'_,-'   i'
+                 ,` `;(_)  0 ; ','       :
+               .';6     ; ' ,-'~
+             ,' Q  ,& ;',-.'
+           ,( :` ; _,-'~  ;
+         ,~.`c _','
+       .';^_,-' ~
+     ,'_;-''
+    ,,~
+    i'
+    :
+''')
 size = input("What size pizza do you want? please answer 's', 'm' or 'l' only.\n")
 toppings = input("Would you like peperoni on your pizza? 'y' or 'n' \n")
 extra_c = input("Would you like extra cheese on your pizza? 'y' or 'n'\n")

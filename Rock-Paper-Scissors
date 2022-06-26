@@ -1,0 +1,71 @@
+###########################################################################
+##                          Rock Paper Scissors                          ##
+###########################################################################
+
+import random
+from time import sleep
+import random
+import string
+
+print('''\r
+__________               __            __________                                        _________      .__                                  
+\______   \ ____   ____ |  | __        \______   \_____  ______   ___________           /   _____/ ____ |__| ______ _________________  ______
+ |       _//  _ \_/ ___\|  |/ /  ______ |     ___/\__  \ \____ \_/ __ \_  __ \  ______  \_____  \_/ ___\|  |/  ___//  ___/  _ \_  __ \/  ___/
+ |    |   (  <_> )  \___|    <  /_____/ |    |     / __ \|  |_> >  ___/|  | \/ /_____/  /        \  \___|  |\___ \ \___ (  <_> )  | \/\___ \ 
+ |____|_  /\____/ \___  >__|_ \         |____|    (____  /   __/ \___  >__|            /_______  /\___  >__/____  >____  >____/|__|  /____  >
+        \/            \/     \/                        \/|__|        \/                        \/     \/        \/     \/                 \/ 
+''')
+
+print("Welcome the rock-paper-scissors tournament")
+sleep(5.0)
+print("Please choose your sign...")
+
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+
+'''
+images = [rock, paper, scissors]
+
+user_choice = int(input("For rock enter '0', for paper enter '1', for scissors enter '2'\n"))
+
+computer_choice = random.randint(0,2)
+
+print(f"You chose {user_choice}\n{images[user_choice]}")
+print(f"Computer chose {computer_choice}\n{images[computer_choice]}")
+
+
+if (user_choice == 0 and computer_choice == 0) or (user_choice == 1 and computer_choice == 1) or (user_choice == 2 and computer_choice == 2):
+        print("We have a tie!")
+
+elif (user_choice == 0 and computer_choice == 2) or (user_choice == 1 and computer_choice == 0) or (user_choice == 2 and computer_choice == 1):
+        print("You win!")
+
+elif (user_choice == 0 and computer_choice == 1) or (user_choice == 1 and computer_choice == 2) or (user_choice == 2 and computer_choice == 0):
+        print("You lose!")
+        
+else:
+       print("You entered an invalid number. Try again.")

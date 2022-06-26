@@ -1,0 +1,22 @@
+###########################################################################
+##                          Tip Calculator                               ##
+###########################################################################
+
+from mimetypes import init
+
+print("Welcome to the tip calculater")
+total = int(input("What is your total bill? \n"))
+people = int(input("How many people are in the group? \n"))
+percentage = int(input("How much tip do you want to give? 10, 12 or 15 \n"))
+
+if percentage == 10:
+    print("Each person has to pay "  + str(total * 0.1 / people))
+
+elif percentage == 12:
+    print("Each person has to pay "  + str(total * 0.12 / people))
+
+elif percentage == 15:
+    print("Each person has to pay "  + str(total * 0.15 / people))
+
+else:
+    print("Invalid tip percentage. Please pick a valid number.")

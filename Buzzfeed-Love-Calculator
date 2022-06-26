@@ -1,0 +1,36 @@
+###########################################################################
+##                     True Love Calculater                              ##
+###########################################################################
+
+name_1 = input("What is your name?\n")
+name_2 = input("What is your crushe's name?\n")
+name_together = str(name_1.lower() + name_2.lower())
+
+print(f"Calculating the chances of true love between {name_1} and {name_2}....")
+
+t = name_together.count('t')
+r = name_together.count('r')
+u = name_together.count('u')
+e = name_together.count('e')
+
+
+true = t + r + u + e 
+
+L = name_together.count('l')
+O = name_together.count('o')
+V = name_together.count('v')
+E = name_together.count('e')
+
+love = L + O + V + E
+
+score = int(f"{true}{love}")
+#print(score)
+
+if score >= 90 or score <= 10:
+    print(f"Your score is {score}, you go together like coke and mentos")
+
+elif score >= 40 and score <= 50:
+    print(f"Your score is {score}, you are alright together")
+
+else:
+    print(f"Chances of true love are %{true}{love}")

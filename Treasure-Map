@@ -17,7 +17,7 @@ position = input("Where do you want to put the treasure? Please type the row and
 row_num = (int(position[0]))
 column_num = (int(position[1]))
 
-print(map[row_num - 1])
+#print(map[row_num - 1])
 confirm = input(f"You selected this spot for your treasure {map[row_num - 1][column_num - 1]}, are you sure you want to continue? y/n\n")
 
 if confirm == 'y' or confirm == 'yes':
@@ -29,6 +29,7 @@ if confirm == 'y' or confirm == 'yes':
 
     if see == 'y' or see == 'yes':
         print("Digging... please hold.")
+        sleep(5.0)
         map[row_num - 1][column_num - 1] = "💲"
         print(f"    1     2     3\n1{row1}\n2{row2}\n3{row3}")
     

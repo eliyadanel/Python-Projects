@@ -1,6 +1,10 @@
 ###########################################################################
-##                            Hangman                                     ##
+##                            Hangman                                    ##
 ###########################################################################
+
+#Important:
+#To use this program you must create a txt file with a wordlist for the game, or simply use mine. I've uploaded it here under "Hangman-Wordlist".
+
 import random
 import string
 from time import sleep

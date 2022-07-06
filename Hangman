@@ -1,0 +1,129 @@
+###########################################################################
+##                            Hangman                                    ##
+###########################################################################
+import random
+import string
+from time import sleep
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+print('''\r
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/  
+''')
+
+print("Welcme to my Hangman game!\n")
+
+#You may also use this online list of words
+#word_web = "https://www.mit.edu/~ecprice/wordlist.10000"
+
+word_list = open('hangman_words.txt', 'r+')
+secret_word = secret_word = random.choice(word_list.read().split())
+
+#print(secret_word) #For debugging
+print("The blank slots below are the number of letters in the word. Good luck!\n")
+
+slots = []
+secret_wl = len(secret_word)
+
+for i in range(secret_wl):                             #Creating a list of empty slots the same length of the secret word
+    slots += "_"                    
+
+print(f"There are {len(secret_word)} letters in the word.\n") #Telling user how many letters in word
+
+print(slots)
+
+lives = 6 
+
+end_of_game = False
+
+while not end_of_game:
+    guess = input("\n\nGuess a letter:\n").lower() #User inputs letter guess in here.
+
+    if guess in slots:
+            print(f"\nYou've already guessed {guess}\n")
+    else:
+        for position in range(secret_wl):      #For each position in the range of 0 to the length of the secret word, the letter equals to the postion inside the secret word.     
+            letter = secret_word[position]
+          
+            if letter == guess:                       #If the letter in a certain postion is equal to the user's guess, the same postion inside the slots list (blanks) will be replaced with the guess \ letter.  
+                print(f"\n{guess} is in the word\n")  
+                slots[position] = letter
+   
+          
+    print(f"\nHere is what you have so far:\n{slots}")
+    
+    if ('_' not in slots):                        #and hangman isnt hanged
+        print("\nYou've won! Congrats\n")
+        end_of_game = True                        #Variable signifying the end of the main while loop becomes true. 
+        exit
+
+    elif guess not in secret_word:                #2nd condition covers wrong guesses. Everytime it's met, the variable lives goes down by one and the ASCII art from the 'stages' list is printed according to the amount of  lives left.             
+        print(f"\n{guess} is not in the word. Adding to your hangedman.")
+        lives -= 1
+        if lives == 0:
+            print("\nYouv'e lost. Better luck next time!\n")
+            end_of_game = True                    #Once lives go down to 0 the game ends.   
+            exit
+        print(stages[lives])

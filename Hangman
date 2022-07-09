@@ -1,13 +1,9 @@
 ###########################################################################
 ##                            Hangman                                    ##
 ###########################################################################
-
-#Important:
-#To use this program you must create a txt file with a wordlist for the game, or simply use mine. I've uploaded it here under "Hangman-Wordlist".
-
 import random
-import string
 from time import sleep
+from turtle import clear
 
 stages = ['''
   +---+
@@ -104,7 +100,7 @@ end_of_game = False
 
 while not end_of_game:
     guess = input("\n\nGuess a letter:\n").lower() #User inputs letter guess in here.
-
+    clear
     if guess in slots:
             print(f"\nYou've already guessed {guess}\n")
     else:

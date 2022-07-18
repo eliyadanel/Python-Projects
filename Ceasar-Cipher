@@ -1,0 +1,101 @@
+###########################################################################
+##                             Ceasar Cipher                             ##
+###########################################################################
+
+#Ceasar Cipher is an encoding method in which the user shifts each letter of the alphabet a predetrmined number of letters to the left.
+#For example if  the shift number is 3, 'A' would be written as 'D'.
+#In this program you will be required to choose the shift number and unsert your message. The program will automatically encode your message using the Ceasar Cipher and output your ready encoded message. 
+#The opposite is also possible and the program will be able to decode your encoded messag, given the correct shift number is provided. 
+
+import string
+from ctypes.wintypes import WORD
+
+print('''
+  ,----..                                                                   ,----..                       ,---,                        
+ /   /   \                                                                 /   /   \   ,--,   ,-.----.  ,--.' |                        
+|   :     :                                                __  ,-.        |   :     :,--.'|   \    /  \ |  |  :                __  ,-. 
+.   |  ;. /                         .--.--.              ,' ,'/ /|        .   |  ;. /|  |,    |   :    |:  :  :              ,' ,'/ /| 
+.   ; /--`    ,---.     ,--.--.    /  /    '    ,--.--.  '  | |' |        .   ; /--` `--'_    |   | .\ ::  |  |,--.   ,---.  '  | |' | 
+;   | ;      /     \   /       \  |  :  /`./   /       \ |  |   ,'        ;   | ;    ,' ,'|   .   : |: ||  :  '   |  /     \ |  |   ,' 
+|   : |     /    /  | .--.  .-. | |  :  ;_    .--.  .-. |'  :  /          |   : |    '  | |   |   |  \ :|  |   /' : /    /  |'  :  /   
+.   | '___ .    ' / |  \__\/: . .  \  \    `.  \__\/: . .|  | '           .   | '___ |  | :   |   : .  |'  :  | | |.    ' / ||  | '    
+'   ; : .'|'   ;   /|  ," .--.; |   `----.   \ ," .--.; |;  : |           '   ; : .'|'  : |__ :     |`-'|  |  ' | :'   ;   /|;  : |    
+'   | '/  :'   |  / | /  /  ,.  |  /  /`--'  //  /  ,.  ||  , ;           '   | '/  :|  | '.'|:   : :   |  :  :_:,''   |  / ||  , ;    
+|   :    / |   :    |;  :   .'   \'--'.     /;  :   .'   \---'            |   :    / ;  :    ;|   | :   |  | ,'    |   :    | ---'     
+ \   \ .'   \   \  / |  ,     .-./  `--'---' |  ,     .-./                 \   \ .'  |  ,   / `---'.|   `--''       \   \  /           
+  `---`      `----'   `--`---'                `--`---'                      `---`     ---`-'    `---`                `----'            
+                                                                                                                                       
+
+''')
+
+print("Welcome to my 'Ceasar Cipher' encoding and decoding program!")
+
+def split(word):
+    return [char for char in word]
+
+alphabets = split(string.ascii_lowercase)
+
+# print(alphabet)
+
+#Using a function with some simple range for loops.
+def encrypt(text, shift):
+    encoded_final = ""
+    text_list  = list(text)
+
+    for i in range(0 , len(text_list)):
+        if text_list[i] in alphabets:
+            for j in range(0 , len(alphabets)):        
+                if(text_list[i] == alphabets[j]):
+                    #print(alphabets[index+shift])
+
+                    encoded_final += alphabets[(j + (shift % len(alphabets))) % len(alphabets)]
+                    # print("encoded Final: " , alphabets[j + (shift % len(alphabets))] )
+                    # print("encoded Final: " , j + (shift % len(alphabets)))
+        else:
+            encoded_final += text_list[i]
+
+    print(f"Your encoded text:\n{encoded_final}")
+
+#For the decryption function i used a different method with the enum function
+def decrypt(text, shift):
+    decoded_final = ""
+    text_list = list(text)
+
+    for index , char in enumerate(text_list): 
+        if char in alphabets:
+            for index , alphabet in enumerate(alphabets):
+                if(char == alphabet):
+                    #print(alphabets[index+shift])
+                    decoded_final += alphabets[index+shift]
+        else:
+            decoded_final += char 
+    
+    print(f"Your decoded text:\n{decoded_final}")
+
+go_on = True
+
+while go_on  == True:
+    direction = input("Type 'e' to encode a message or 'd' to decode a message.\n")
+    text_inp = (input("Type your decoded /encoded message here.\n")).lower()
+    shift_inp = int(input("Type the shift number.\n"))
+
+    shift_inp = shift_inp % 26
+
+    if direction == 'e':
+        encrypt(text = text_inp, shift = shift_inp)
+
+    elif direction == 'd':
+        decrypt(text = text_inp, shift = -(shift_inp))
+
+    else:
+        print("Couldn't complrehend your choice. Please try again.")
+    
+    go_on = input("Would you like do use the program again now? y/n \n")
+
+    if go_on == 'y':
+        go_on = True
+        print("Starting again...")
+    elif go_on == 'n':
+        go_on = False
+        print('Thanks for using my cipher program.')
+        exit

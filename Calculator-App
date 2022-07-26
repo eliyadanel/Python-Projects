@@ -1,10 +1,31 @@
 ###########################################################################
 ##                           Calculator App                              ##
 ###########################################################################
-from logo import logo_10, logo_10_2
 import os
-
-print(f"{logo_10} {logo_10_2}\n\nWelcome to my calculator app!\n")
+print('''
+           _            _       _             
+          | |          | |     | |            
+  ___ __ _| | ___ _   _| | __ _| |_ ___  _ __ 
+ / __/ _` | |/ __| | | | |/ _` | __/ _ \| '__|
+| (_| (_| | | (__| |_| | | (_| | || (_) | |   
+ \___\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|  
+  _____________________
+|  _________________  |
+| | JO           0. | |
+| |_________________| |
+|  ___ ___ ___   ___  |
+| | 7 | 8 | 9 | | + | |
+| |___|___|___| |___| |
+| | 4 | 5 | 6 | | - | |
+| |___|___|___| |___| |
+| | 1 | 2 | 3 | | x | |
+| |___|___|___| |___| |
+| | . | 0 | = | | / | |
+| |___|___|___| |___| |
+|_____________________|
+                                             
+''')
+print("\n\nWelcome to my calculator app!\n")
 
 #Add
 def addition(num1, num2):
@@ -37,12 +58,26 @@ operations = {
 go_on = 'y'
 
 while go_on == 'y':
-    num1 = int(input("What's your first number?\n"))
-    num2 = int(input("What's your second number?\n"))
-    op = input("Please enter you operator, choose one from below: \n")
+    num1 = float(input("What's your first number?\n"))
     for symbol in operations:
         print(symbol)
+    op = input("Please enter an operator, choose one from above: \n")
+    num2 = float(input("What's your second number?\n"))
+    
     function = operations[op]
-    print(function(num1, num2))
-    go_on = input("Would you like to make another calculation? type 'y' or 'n'\n")
-    os.system('cls')
+    answer = function(num1, num2)
+    print(f"{num1} {op} {num2} = {answer}") #print result in form of equasion
+    
+    next = input("Do you want to continue this calculation? 'y' or 'n'\n")
+    if next == 'y':
+        while next == 'y':
+            #os.system('cls') #clear screen for better UI.
+            op = input("Please enter another operator: \n")
+            num3 = float(input("Please enter another number:\n"))
+            function = operations[op]
+            print(f"{answer} {op} {num3} = {function(answer, num3)}")
+            answer = function(answer, num3)
+            next = input("Do you want to continue this calculation? 'y' or 'n'\n")
+    else: 
+        go_on = input("Would you like to make another calculation? type 'y' or 'n'\n") #ask user if they want to make another calculation
+        os.system('cls') 

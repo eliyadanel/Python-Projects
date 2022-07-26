@@ -39,7 +39,9 @@ go_on = 'y'
 while go_on == 'y':
     num1 = int(input("What's your first number?\n"))
     num2 = int(input("What's your second number?\n"))
-    op = input("Please enter you operator: +, -, /, *\n")
+    op = input("Please enter you operator, choose one from below: \n")
+    for symbol in operations:
+        print(symbol)
     function = operations[op]
     print(function(num1, num2))
     go_on = input("Would you like to make another calculation? type 'y' or 'n'\n")

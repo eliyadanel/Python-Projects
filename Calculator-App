@@ -1,0 +1,46 @@
+###########################################################################
+##                           Calculator App                              ##
+###########################################################################
+from logo import logo_10, logo_10_2
+import os
+
+print(f"{logo_10} {logo_10_2}\n\nWelcome to my calculator app!\n")
+
+#Add
+def addition(num1, num2):
+    result = num1 + num2
+    return result
+
+#Substract
+def substraction(num1, num2):
+    result = num1 - num2
+    return result
+
+#Multiply
+def multiplication(num1, num2):
+    result = num1 * num2
+    return result
+
+#Divide
+def division(num1, num2):
+    result = num1 / num2
+    return result
+
+
+operations = {
+    '+': addition,
+    '-': substraction,
+    '*': multiplication,
+    '/': division,
+}
+
+go_on = 'y'
+
+while go_on == 'y':
+    num1 = int(input("What's your first number?\n"))
+    num2 = int(input("What's your second number?\n"))
+    op = input("Please enter you operator: +, -, /, *\n")
+    function = operations[op]
+    print(function(num1, num2))
+    go_on = input("Would you like to make another calculation? type 'y' or 'n'\n")
+    os.system('cls')

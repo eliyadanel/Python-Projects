@@ -1,43 +1,43 @@
-import turtle
-import pandas
-
-screen = turtle.Screen()  # Creating screen object
-screen.title("U.S. States Game")  # Defining screen title
-image = "blank_states_img.gif"  # The image variable contains the relative path of the states image
-screen.addshape(image)
-turtle.shape(image)  # Defining the image as the background of the game
-
-data = pandas.read_csv("50_states.csv")
-all_states = data['state'].tolist()  # Creating a list of all the state's names
-x_list = data.x.tolist()  # Creating a list of all the state's coordinates
-y_list = data.y.tolist()
-
-cor_list = []  # Creating a list of tuples from the x and y coordinates lists.
-for x, y in zip(x_list, y_list):
-    cor_list.append((x, y))
-
-correct_answers = []  # Correct answers, to keep score.
-score = 0
-
-while score < 50:  # While the user has guessed less than 50 correct states, the game loop continues
-    # The user inputs the answer in the text box, and it is saved in the variable.
-    answer_state = (screen.textinput(title=f"{score}/50 States Guessed", prompt="What's this state's name?")).capitalize()
-    if answer_state == "Exit":
-        missing_states = [state for state in all_states if state not in correct_answers]
-        new_data = pandas.DataFrame(missing_states)
-        new_data.to_csv("states_to_learn")
-        break
-    if answer_state in all_states:
-        state_index = all_states.index(answer_state)  # Checking the index number of the state in the state list
-        t = turtle.Turtle()  # Creating turtle object to write the names of the state on the screen
-        t.hideturtle()
-        t.penup()
-        t.goto(cor_list[state_index])  # The t object goes to the x and y positions of the same index number as the state's
-        t.write(arg=answer_state, align="center", move=False, font=("Verdana", 8, "normal"))  # Defining the writing settings
-        if answer_state not in correct_answers:  # Appending the correct answer to the correct answers list unless it is already in there
-            correct_answers.append(answer_state)
-            score = len(correct_answers)
-    else:
-        print('wrong')
-
-turtle.mainloop()
+from turtle import Screen
+from snake import Snake
+from food import Food
+from scoreboard import Scoreboard
+import time
+# Defining screen settings:
+screen = Screen()
+screen.setup(width=600, height=600)
+screen.bgcolor("black")
+screen.title("My Snake Game")
+screen.tracer(0)
+# Defining the class objects:
+scoreboard = Scoreboard()
+snake = Snake()
+food = Food()
+# The screen object listens to keystrokes so the user can control the snake with keyboard:
+screen.listen()
+screen.onkey(key="Up", fun=snake.up)
+screen.onkey(key="Down", fun=snake.down)
+screen.onkey(key="Left", fun=snake.left)
+screen.onkey(key="Right", fun=snake.right)
+# While variable game_on is True, the game goes on:
+game_on = True
+while game_on:
+    # The screen works in the update method, and sleeps between updates so the snake 'animation' doesn't lag.
+    screen.update()
+    time.sleep(0.1)
+    snake.move()
+    # Detect collision with food. If occurs: increase score + grow snake:
+    if snake.head.distance(food) < 15:
+        food.refresh()
+        snake.extend()
+        scoreboard.increase_score()
+    # Detect collision with wall. If occurs: calculate highscore + start new game
+    if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
+        scoreboard.reset_high_score()
+        snake.reset_snake()
+    # Detect collision with tail. If occurs: calculate highscore + start new game
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 5:
+            scoreboard.reset_high_score()
+            snake.reset_snake()
+screen.exitonclick()
